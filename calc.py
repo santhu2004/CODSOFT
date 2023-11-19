@@ -3,27 +3,34 @@ The shortest calculator program can be done in a single line using the "eval()" 
 print(eval(input("Enter the expression as a string: ")))
 """
 
-
 import tkinter as tk
 
-# Function to evaluate the expression in the entry field
 def calculate():
+    """
+    Perform calculation based on the expression entered in the entry field.
+    If successful, display the result. If there's an error, display 'Error'.
+    """
     try:
-        expression = entry.get()  # Get the expression from the entry field
-        result = eval(expression)  # Evaluate the expression
-        entry.delete(0, tk.END)  # Clear the entry field
-        entry.insert(tk.END, str(result))  # Display the result in the entry field
+        expression = entry.get()
+        result = eval(expression)
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, str(result))
     except Exception as e:
-        entry.delete(0, tk.END)  # Clear the entry field
-        entry.insert(tk.END, "Error")  # Display 'Error' if there's an exception
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, "Error")
 
-# Function to add a value to the entry field
 def add_to_display(value):
-    entry.insert(tk.END, value)  # Insert the given value at the end of the entry field
+    """
+    Add a value to the entry field when a button is clicked.
 
-# Function to clear the entry field
+    Args:
+    - value: The value to be added to the entry field.
+    """
+    entry.insert(tk.END, value)
+
 def clear_display():
-    entry.delete(0, tk.END)  # Clear the entry field
+    """Clear the content in the entry field."""
+    entry.delete(0, tk.END)
 
 # Create the main window
 root = tk.Tk()
@@ -49,15 +56,12 @@ for row in buttons:
     col_num = 0
     for button_text in row:
         if button_text == '=':
-            # '=' button for calculation
             button = tk.Button(root, text=button_text, padx=40, pady=20, command=calculate, bg='orange')
         elif button_text == 'C':
-            # 'C' button for clearing
             button = tk.Button(root, text=button_text, padx=40, pady=20, command=clear_display, bg='red')
         else:
-            # Buttons for numbers and operators
             button = tk.Button(root, text=button_text, padx=40, pady=20, command=lambda value=button_text: add_to_display(value))
-        button.grid(row=row_num, column=col_num, padx=5, pady=5)  # Place the button in the grid
+        button.grid(row=row_num, column=col_num, padx=5, pady=5)
         col_num += 1
     row_num += 1
 
