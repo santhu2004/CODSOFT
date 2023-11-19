@@ -1,5 +1,5 @@
 """
-The shortest calculator program can be done in a single line using the "eval()" function in python:
+Did you know: the shortest calculator program can be done in a single line using the "eval()" function in python:
 print(eval(input("Enter the expression as a string: ")))
 """
 
