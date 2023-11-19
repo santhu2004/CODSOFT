@@ -1,27 +1,27 @@
 import tkinter as tk
 
 def add_task():
-    # Function to add a task to the list
-    task = entry.get()  # Retrieve the task from the Entry widget
+    """Add a task to the to-do list."""
+    task = entry.get()
     if task:
-        tasks.insert(tk.END, task)  # Insert the task into the Listbox
-        entry.delete(0, tk.END)  # Clear the Entry widget after adding the task
+        tasks.insert(tk.END, task)
+        entry.delete(0, tk.END)
 
 def remove_task():
-    # Function to remove a selected task from the list
+    """Remove a selected task from the to-do list."""
     try:
-        index = tasks.curselection()[0]  # Get the index of the selected task
-        tasks.delete(index)  # Remove the task from the Listbox
+        index = tasks.curselection()[0]
+        tasks.delete(index)
     except IndexError:
-        pass  # Ignore if no task is selected
+        pass
 
 def complete_task():
-    # Function to mark a selected task as completed
+    """Mark a selected task as completed."""
     try:
-        index = tasks.curselection()[0]  # Get the index of the selected task
-        tasks.itemconfig(index, fg="gray")  # Change the color of the task to gray
+        index = tasks.curselection()[0]
+        tasks.itemconfig(index, fg="gray")
     except IndexError:
-        pass  # Ignore if no task is selected
+        pass
 
 # Create main window
 root = tk.Tk()
